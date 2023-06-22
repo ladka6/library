@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Book>
+
+@{
+    ViewData["Title"] = "List of Books";
+}
+
+<div class="row">
+       <div class="col-md-8 offset-md-2">
+           <table class="table">
+               <thead>
+                   <tr class="text-center">
+                       <th>Image</th>
+                       <th>Books Name</th>
+                       <th>Author</th>
+                       <th>Is Available?</th>
+                       <th>Borrowers Name</th>
+                       <th>Return Date</th>
+                       <th>Want to Borrow?</th>
+                   </tr>
+               </thead>
+               <tbody>
+                @foreach (var book in Model)
+                {
+                    <tr>
+                        <td class="align-middle text-center">
+                            <img class="rounded-circle" src="@book.ImageUrl" alt="@book.Name" style="max-width: 50px"/>
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => book.Name)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => book.Author)
+                        </td>
+                       
+                        @if (book.IsAvailable)
+                        {
+                            <td class="align-middle text-center">
+                                <i class="bi bi-check2-square"></i>
+                            </td>
+                            <td class="align-middle text-center">-</td>
+                            <td class="align-middle text-center">-</td>
+                            <td class="align-middle text-center">
+                                @Html.ActionLink("Borrow Now", "Borrow","Book", new {id = book.Id}, new {@class = "btn btn-primary"})
+                            </td>
+                        }else {
+                            <td class="align-middle text-center">
+                                <i class="bi bi-square"></i>
+                            </td>
+                            <td class ="align-middle text-center">
+                                @Html.DisplayFor(modelItem => book.BorrowerName)
+                            </td>
+                            <td class="align-middle text-center">
+                                @Html.DisplayFor(modelItem => book.ReturnDate)
+                            </td>
+                            <td class="align-middle text-center">-</td>
+                            }
+                    </tr>
+                }
+            </tbody>
+           </table>
+       </div>
+</div>

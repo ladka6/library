@@ -1,0 +1,29 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Add new Book";
+}
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Add new Book</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Books Name</label>
+            <input type="text" class="form-control" id="bookName" asp-for="Name"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Books Writer</label>
+            <input type="text" class="form-control" id="bookWrier" asp-for="Author"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Books Image Url</label>
+            <input type="text" class="form-control" id="bookUrl" asp-for="ImageUrl"/>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+</div>
